@@ -1,0 +1,14 @@
+<p>department-detail works!</p>
+<hr/>
+<div *ngIf="dept">
+  <div>
+    <label><b>Department Code: </b></label> {{dept.deptCode}}
+  </div>
+  <div>
+    <label><b>Department Name: </b></label> {{dept.deptName}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Department List</button><br>

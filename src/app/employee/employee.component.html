@@ -1,0 +1,49 @@
+<p>employee works!</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2>Employee List</h2>
+	</div>
+	<div class="panel-body">
+		<button class="btn btn-primary" ><a (click)="empCreate()" >Add Employee</a></button>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>gender</th>
+					<th>address</th>
+					<th>phone number</th>
+					<th>email</th>
+					<th>birth day</th>
+					<th>start day</th>
+					<th>create by</th>
+					<th>time create</th>
+					<th>update by</th>
+					<th>time update</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of employees">
+					<td>{{item.empFirstName}}</td>
+					<td>{{item.empLastName}}</td>
+					<td>{{item.empGender}}</td>
+					<td>{{item.empPhoneNumber}}</td>
+					<td>{{item.empAddress}}</td>
+					<td>{{item.empEmail}}</td>
+					<td>{{item.empBirthDay | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.empStartDay | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.userCreateID}}</td>
+					<td>{{item.createdAt | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.userUpdateID}}</td>
+					<td>{{item.updatedAt | date:'dd/MM/yyyy'}}</td>
+					<td>
+						<button (click)="deleteEmp(item.id)" class="btn btn-danger">Delete</button>
+						<button (click)="empUpdate(item.id)" class="btn btn-primary">Update</button>
+						<button (click)="empDetail(item.id)" class="btn btn-info">Details</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<p>department-list works!</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2>Department List</h2>
+	</div>
+	<div class="panel-body">
+		<a class="btn btn-primary" (click)="deptCreate()">Add Department</a>
+		<table class="mat-table table table-striped">
+			<thead>
+				<tr class="mat-header-row">
+					<th class='mat-header-cell'>Department Code</th>
+					<th class='mat-header-cell'>Department Name</th>
+					<th class='mat-header-cell'>create by</th>
+					<th class='mat-header-cell'>time create</th>
+					<th class='mat-header-cell'>update by</th>
+					<th class='mat-header-cell'>time update</th>
+					<th class='mat-header-cell'>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="mat-row" *ngFor="let item of departments">
+					<td class="mat-cell">{{item.deptCode}}</td>
+					<td class="mat-cell">{{item.deptName}}</td>
+					<td class="mat-cell">{{item.createdBy}}</td>
+					<td class="mat-cell">{{item.createdAt | date:'dd/MM/yyyy'}}</td>
+					<td class="mat-cell">{{item.updatedBy}}</td>
+					<td class="mat-cell">{{item.updatedAt | date:'dd/MM/yyyy'}}</td>
+					<td class="mat-cell">
+						<button (click)="deleteDept(item.id)" class="btn btn-danger">Delete</button>
+						<button (click)="deptUpdate(item.id)" class="btn btn-primary">Update</button>
+						<button (click)="deptDetail(item.id)" class="btn btn-info">Details</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="5" [length]="totalElements" (page)="nextPage($event)"></mat-paginator>
+	</div>
+</div>
