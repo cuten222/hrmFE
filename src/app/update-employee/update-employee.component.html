@@ -94,7 +94,7 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-success"> Submit </button>
+			<button type="submit" [disabled]="!empForm.valid" class="btn btn-success"> Submit </button>
 			<button (click)="gotoList()" class="btn btn-primary"> Back </button>
 
 	</form>

@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of employees">
+				<tr *ngFor="let item of empsLimit">
 					<td>{{item.empFirstName}}</td>
 					<td>{{item.empLastName}}</td>
 					<td>{{item.empGender}}</td>
@@ -44,6 +44,12 @@
 					</td>
 				</tr>
 			</tbody>
+			<div>
+				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+				{{currentPage+1}}/{{numberOfPages()}}
+				<button [disabled]="currentPage >= employees.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+			</div>
 		</table>
+
 	</div>
 </div>

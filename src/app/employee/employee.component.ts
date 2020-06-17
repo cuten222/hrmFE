@@ -9,15 +9,38 @@ import { Router } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
   employees = [];
+  // const request = {};
+  empsLimit: any = [];
+  start: number = 0;
+  pageSize: number = 5;
+  currentPage: number = 0;
 
   constructor(private empService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
     this.getEmps();
+    this.EmpLimit();
   }
 
-  getEmps(): void {
+  //get all employee
+  getEmps(): void { 
     this.empService.getEmps().subscribe(employees => (this.employees = employees));
+  }
+  //get Employee with limit result
+  EmpLimit(){
+    this.empService.getLimitEmp(this.start, this.pageSize).subscribe(
+      data => this.empsLimit = data
+    );
+  }
+  
+  //get limit of next page
+  getLimit(start, limit, current){
+    this.currentPage = current;
+    this.EmpLimit();
+  }
+  
+  numberOfPages(){
+    return Math.ceil(this.employees.length/this.pageSize);
   }
 
   deleteEmp(empID: number) {
@@ -27,7 +50,7 @@ export class EmployeeComponent implements OnInit {
         data => {
           console.log('data: ', data);
           alert(`Delete Successful! ${data}`);
-          this.getEmps();
+          this.EmpLimit();
         }, error => console.log(error)
       );
     }

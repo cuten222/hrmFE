@@ -18,6 +18,11 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`${this.empUrl}/list`);
   }
 
+  getLimitEmp(start:number, pageSize:number): Observable<any>{
+    // const params = request;
+    return this.http.get<any>(`${this.empUrl}/listLimit?start=${start}&limit=${pageSize}`);
+  }
+
   /** GET Employees by id from the server */
   getEmp(empID: number): Observable<Employee>{
     return this.http.get<Employee>(`${this.empUrl}/get/${empID}`);

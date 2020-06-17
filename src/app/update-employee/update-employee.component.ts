@@ -73,7 +73,7 @@ export class UpdateEmployeeComponent implements OnInit {
       );
       this.gotoList();
     }else{
-      alert("Update Failed! Some input form have invalid value!");
+      alert("Update Failed! Some input form might have invalid value!");
     }
   }
 
