@@ -1,0 +1,109 @@
+<div>
+	<h1 style="text-align: center;">Update Employee</h1>
+	<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="name">First Name</label>
+					<input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName">
+					<div *ngIf="!empForm.controls['firstName'].valid && (empForm.controls['firstName'].touched)"
+						class="alert alert-danger">
+						<div [hidden]="!empForm.controls['firstName'].errors.required">
+							First name is required.
+						</div>
+						<div [hidden]="!empForm.controls['firstName'].errors.pattern">
+							First name can't be number
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name">Last Name</label>
+					<input type="text" class="form-control" id="lastName" formControlName="lastName" name="lastName">
+					<div *ngIf="!empForm.controls['lastName'].valid && (empForm.controls['lastName'].touched)"
+						class="alert alert-danger">
+						<div [hidden]="!empForm.controls['lastName'].errors.required">
+							Last name is required.
+						</div>
+						<div [hidden]="!empForm.controls['lastName'].errors.pattern">
+							Last name can't be number
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name">Email</label>
+					<input type="text" class="form-control" id="email" formControlName="email" name="email">
+					<div *ngIf="!empForm.controls['email'].valid && (empForm.controls['email'].touched)"
+						class="alert alert-danger">
+						<div [hidden]="!empForm.controls['email'].errors.required">
+							Email is required.
+						</div>
+						<div [hidden]="!empForm.controls['email'].errors.email">
+							Email invalid.
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name">Address</label>
+					<input type="text" class="form-control" id="address" formControlName="address" name="address">
+					<div *ngIf="!empForm.controls['address'].valid && (empForm.controls['address'].touched)"
+						class="alert alert-danger">
+						<div [hidden]="!empForm.controls['address'].errors.required">
+							Address is required.
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="name">Gender</label>
+					<input type="text" class="form-control" id="gender" formControlName="gender" name="gender">
+					<div *ngIf="!empForm.controls['gender'].valid && (empForm.controls['gender'].touched)"
+						class="alert alert-danger">
+						<div [hidden]="!empForm.controls['gender'].errors.required">
+							Gender is required.
+						</div>
+					</div>
+				</div>
+					
+					<div class="form-group">
+						<label for="name">Phone Number</label>
+						<input type="text" class="form-control" id="phonenumber" formControlName="phonenumber"
+							name="phonenumber">
+						<div *ngIf="!empForm.controls['phonenumber'].valid && (empForm.controls['phonenumber'].touched)"
+							class="alert alert-danger">
+							<div [hidden]="!empForm.controls['phonenumber'].errors.required">
+								Phone number is required.
+							</div>
+							<div [hidden]="!empForm.controls['phonenumber'].errors.pattern">
+								Phone number ivalid.
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name">Birth Day</label>
+						<input type="date" class="form-control" id="birthday" formControlName="birthday" name="birthday">
+						<div *ngIf="!empForm.controls['birthday'].valid && (empForm.controls['birthday'].touched)"
+							class="alert alert-danger">
+							<div [hidden]="!empForm.controls['birthday'].errors.required">
+								Birth Day is required.
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name">Start Day</label>
+						<input type="date" class="form-control" id="startday" formControlName="startday" name="startday">
+						<div *ngIf="!empForm.controls['startday'].valid && (empForm.controls['startday'].touched)"
+							class="alert alert-danger">
+							<div [hidden]="!empForm.controls['startday'].errors.required">
+								Start Day is required.
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+			<button type="submit" [disabled]="!empForm.valid" class="btn btn-success"> Submit </button>
+			<button (click)="gotoList()" class="btn btn-primary"> Back </button>
+
+	</form>
+</div>

@@ -1,35 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './employee.service';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeListComponent implements OnInit {
   employees = [];
-  // const request = {};
   empsLimit: any = [];
+  skill: any = [];
   start: number = 0;
   pageSize: number = 5;
   currentPage: number = 0;
 
   constructor(private empService: EmployeeService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getEmps();
     this.EmpLimit();
   }
 
   //get all employee
   getEmps(): void { 
-    this.empService.getEmps().subscribe(employees => (this.employees = employees));
+    this.empService.getEmps().subscribe((employees:any) => {
+      this.employees = employees;
+    });
   }
   //get Employee with limit result
   EmpLimit(){
     this.empService.getLimitEmp(this.start, this.pageSize).subscribe(
-      data => this.empsLimit = data
+      data => {
+        this.empsLimit = data
+        console.log("data: ",this.empsLimit);
+        
+      }
+
     );
   }
   
@@ -57,16 +64,11 @@ export class EmployeeComponent implements OnInit {
 
   }
 
-  empDetail(empID: number) {
-    this.router.navigate(['employeedetails', empID]);
-  }
-
   empUpdate(empID: number) {
-    this.router.navigate(['employeeupdate', empID]);
+    this.router.navigate(['employee/update', empID]);
   }
 
   empCreate() {
-    this.router.navigate(['employeecreate']);
+    this.router.navigate(['employee/create']);
   }
-
 }

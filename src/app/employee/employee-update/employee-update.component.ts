@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee/Employee';
-import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from '../employee/employee.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 @Component({
-  selector: 'app-update-employee',
-  templateUrl: './update-employee.component.html',
-  styleUrls: ['./update-employee.component.css']
+  selector: 'app-employee-update',
+  templateUrl: './employee-update.component.html',
+  styleUrls: ['./employee-update.component.css']
 })
-export class UpdateEmployeeComponent implements OnInit {
+export class EmployeeUpdateComponent implements OnInit {
 
   empForm: FormGroup;
   empID: number;
-  emp: Employee;
+  emp: any;
   submitted = false;
   dateformat = new DatePipe('en-US');
 
@@ -35,7 +34,7 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.emp = new Employee();
+    this.emp = new Object;
     this.empID = this.route.snapshot.params['empID'];
     this.employeeService.getEmp(this.empID).subscribe(
       data => {
@@ -82,7 +81,6 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   gotoList(){
-    this.router.navigate(['/employee']);
+    this.router.navigate(['/employee/list']);
   }
-
 }

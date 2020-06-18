@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Employee } from './Employee';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,8 @@ export class EmployeeService {
   }
 
   /** GET Employees from the server */
-  getEmps (): Observable<Employee[]>{
-    return this.http.get<Employee[]>(`${this.empUrl}/list`);
+  getEmps (): Observable<any>{
+    return this.http.get<any>(`${this.empUrl}/list`);
   }
 
   getLimitEmp(start:number, pageSize:number): Observable<any>{
@@ -24,8 +23,8 @@ export class EmployeeService {
   }
 
   /** GET Employees by id from the server */
-  getEmp(empID: number): Observable<Employee>{
-    return this.http.get<Employee>(`${this.empUrl}/get/${empID}`);
+  getEmp(empID: number): Observable<any>{
+    return this.http.get<any>(`${this.empUrl}/get/${empID}`);
   }
 
   /** Create Employees */
