@@ -34,7 +34,6 @@ export class EmployeeListComponent implements OnInit {
       data => {
         this.empsLimit = data
         console.log("data: ",this.empsLimit);
-        
       }
 
     );

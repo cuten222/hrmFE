@@ -14,13 +14,14 @@ export class EmployeeUpdateComponent implements OnInit {
   empForm: FormGroup;
   empID: number;
   emp: any;
-  submitted = false;
+  dept: any = [];
   dateformat = new DatePipe('en-US');
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private employeeService: EmployeeService) { 
+              private employeeService: EmployeeService,) { 
+
     this.empForm = this.fb.group({
       firstName: new FormControl(),
       lastName: new FormControl(),
@@ -29,7 +30,8 @@ export class EmployeeUpdateComponent implements OnInit {
       email: new FormControl(),
       phonenumber: new FormControl(),
       birthday: new FormControl(),
-      startday: new FormControl()
+      startday: new FormControl(),
+      dept: new FormControl()
     });           
   }
 
@@ -48,7 +50,8 @@ export class EmployeeUpdateComponent implements OnInit {
           email: [this.emp.empEmail,[Validators.required, Validators.email]],
           phonenumber: [this.emp.empPhoneNumber,[Validators.required, Validators.pattern("(03|07|08|09|01[2|6|8|9])+([0-9]{8})")]],
           birthday: [this.dateformat.transform(this.emp.empBirthDay, 'yyyy-MM-dd'), [Validators.required]],
-          startday: [this.dateformat.transform(this.emp.empStartDay, 'yyyy-MM-dd'), [Validators.required]]
+          startday: [this.dateformat.transform(this.emp.empStartDay, 'yyyy-MM-dd'), [Validators.required]],
+          dept: [this.emp.user.dept.deptCode, [Validators.required]],
         });
       }, error => console.log(error)
     );

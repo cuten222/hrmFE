@@ -10,7 +10,11 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class DepartmentListComponent implements OnInit {
   departments: any = [];
-  totalElements: number = 0;
+  limitDepartment:any = [];
+  start: number = 0;
+  pageSize: number = 5;
+  currentPage: number = 0;
+
 
   constructor(private deptService: DepartmentService,
     private router: Router
@@ -18,24 +22,32 @@ export class DepartmentListComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.getAllDept({ page: "0", size: "5" });
+    this.getAllDept();
+    this.getLimitDept();
   }
 
-  getAllDept(request){
-    this.deptService.getDepts(request).subscribe(
+  getAllDept(){
+    this.deptService.getDepts().subscribe(
       data => {
         console.log('dept:', data);
-        this.departments = data['content'];
-        this.totalElements = data['totalElements'];
+        this.departments = data;
       }
     );
   }
 
-  nextPage(event: PageEvent) {
-    const request = {};
-    request['page'] = event.pageIndex.toString();
-    request['size'] = event.pageSize.toString();
-    this.getAllDept(request);
+  getLimitDept(){
+    this.deptService.getLimitDept(this.start, this.pageSize).subscribe(
+      data => this.limitDepartment = data
+    );
+  }
+
+  getLimit(start, limit, current){
+    this.currentPage = current;
+    this.getLimitDept();
+  }
+
+  numberOfPages(){
+    return Math.ceil(this.departments.length/this.pageSize)
   }
 
   deleteDept(deptID: number) {
@@ -44,7 +56,7 @@ export class DepartmentListComponent implements OnInit {
         data => {
           console.log('data: ', data);
           alert(`Delete Successful! ${data}`);
-          this.getAllDept({ page: "0", size: "5" });
+          this.getAllDept();
         }, error => console.log(error)
       );
     }

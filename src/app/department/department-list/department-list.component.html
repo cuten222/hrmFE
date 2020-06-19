@@ -18,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="mat-row" *ngFor="let item of departments">
+				<tr class="mat-row" *ngFor="let item of limitDepartment">
 					<td class="mat-cell">{{item.deptCode}}</td>
 					<td class="mat-cell">{{item.deptName}}</td>
 					<td class="mat-cell">{{item.createdBy}}</td>
@@ -32,7 +32,11 @@
 					</td>
 				</tr>
 			</tbody>
+			<div>
+				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+				{{currentPage+1}}/{{numberOfPages()}}
+				<button [disabled]="currentPage >= departments.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+			</div>
 		</table>
-		<mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="5" [length]="totalElements" (page)="nextPage($event)"></mat-paginator>
 	</div>
 </div>

@@ -10,9 +10,12 @@ export class DepartmentService {
   private Url = 'http://192.168.4.172:8080/dept';
   constructor(private http: HttpClient) { }
 
-  getDepts(request): Observable<any>{
-    const params = request;
-    return this.http.get<any>(`${this.Url}/list`, {params});
+  getDepts(): Observable<any>{
+    return this.http.get<any>(`${this.Url}/list`);
+  }
+
+  getLimitDept(start:number, pageSize:number): Observable<any>{
+    return this.http.get<any>(`${this.Url}/listLimit?start=${start}&pageSize=${pageSize}`)
   }
 
   /** GET Department by id from the server */
