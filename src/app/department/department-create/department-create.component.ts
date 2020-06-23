@@ -6,13 +6,13 @@ import { __values } from 'tslib';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 //create function to not allow deptcode name in user[]
-export function forbiddenUsername(deptCode = []) {
-  return (c: AbstractControl) => {
-    return (deptCode.includes(c.value)) ? {
-      invalidDeptCode: true
-    } : null;
-  };
-}
+// export function forbiddenUsername(deptCode = []) {
+//   return (c: AbstractControl) => {
+//     return (deptCode.includes(c.value)) ? {
+//       invalidDeptCode: true
+//     } : null;
+//   };
+// }
 
 @Component({
   selector: 'app-department-create',

@@ -1,0 +1,33 @@
+<p>skill-list works!</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2>Project List</h2>
+	</div>
+	<div class="panel-body">
+        <a class="btn btn-primary" (click)="createSkill()">Add new skill</a>
+		<table class="mat-table table table-striped">
+			<thead>
+				<tr class="mat-header-row">
+					<th>Skill Code:</th>
+					<th>Description</th>
+                    <th>Function</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="mat-row" *ngFor="let item of limitSkill">
+					<td>{{item.skillCode}}</td>
+					<td>{{item.description}}</td>
+					<td class="mat-cell">
+						<button (click)="deleteSkill(item.id)" class="btn btn-danger">Delete</button>
+						<button (click)="updateSkill(item.id)" class="btn btn-primary">Update</button>
+					</td>
+				</tr>
+			</tbody>
+			<div>
+				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+				{{currentPage+1}}/{{numberOfPages()}}
+				<button [disabled]="currentPage >= skill.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+			</div>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<p>project-create works!</p>
+<div>
+	<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Project name <span>(*)</span></label>
+                    <input id="projectName" name="projectName" formControlName="projectName" type="text" class="form-control" >	
+                    <div *ngIf="!projectForm.controls['projectName'].valid && (projectForm.controls['projectName'].touched)" class="alert alert-danger">
+                        <div [hidden]="!projectForm.controls['projectName'].errors.required">
+                            Project name is required.
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="name">Description</label>
+                    <input id="description" name="description" formControlName="description" type="text" class="form-control" >	
+                </div>
+                <div class="form-group">
+                    <label for="name">Project Type <span>(*)</span></label>
+                    <select formControlName="projectType" id="projectType" class="form-control" >
+                        <option value="" disabled>Choose a project type</option>
+                        <option *ngFor="let item of projectType" [value]="item.id">{{item.typeName}}</option>
+                    </select>
+                    <div *ngIf="!projectForm.controls['projectType'].valid && (projectForm.controls['projectType'].touched)" class="alert alert-danger">
+                        <div [hidden]="!projectForm.controls['estimate'].errors.required">
+                            Project Type is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Date Start <span>(*)</span></label>
+                    <input id="dateStart" name="dateStart" formControlName="dateStart" type="date" class="form-control">
+                    <div *ngIf="!projectForm.controls['dateStart'].valid && (projectForm.controls['dateStart'].touched)" class="alert alert-danger">
+                        <div [hidden]="!projectForm.controls['dateStart'].errors.required">
+                            Date Start is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Estimate <span>(*)</span></label>
+                    <input id="estimate" name="estimate" formControlName="estimate" type="date" class="form-control">
+                    <div *ngIf="!projectForm.controls['estimate'].valid && (projectForm.controls['estimate'].touched)" class="alert alert-danger">
+                        <div [hidden]="!projectForm.controls['estimate'].errors.required">
+                            Estimate is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Date End</label>
+                    <input id="dateEnd" name="dateEnd" formControlName="dateEnd" type="date" class="form-control">
+                </div>
+            </div>
+        </div>
+		<button type="submit" [disabled]="!projectForm.valid" class="btn btn-success">Submit</button>
+		<button (click)="gotoList()" class="btn btn-primary">Back</button>
+	</form>
+</div>

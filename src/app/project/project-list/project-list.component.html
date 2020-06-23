@@ -1,0 +1,43 @@
+<p>project-list works!</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2>Project List</h2>
+	</div>
+	<div class="panel-body">
+		<a class="btn btn-primary" (click)="createProject()">Add Project</a>
+		<table class="mat-table table table-striped">
+			<thead>
+				<tr class="mat-header-row">
+					<th>Project Name</th>
+					<th>Date Start</th>
+					<th>Estimate</th>
+					<th>Date End</th>
+					<th>Description</th>
+                    <th>Project Type</th>
+                    <th>Status</th>
+                    <th>Function</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="mat-row" *ngFor="let item of limitProject">
+					<td>{{item.projectName}}</td>
+					<td>{{item.dateStart | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.estimate | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.dateEnd | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.description}}</td>
+                    <td>{{item.projectType.typeName}}</td>
+                    <td>{{item.iStatus}}</td>
+					<td class="mat-cell">
+						<button (click)="deleteProject(item.id)" class="btn btn-danger">Delete</button>
+						<button (click)="updateProject(item.id)" class="btn btn-primary">Update</button>
+					</td>
+				</tr>
+			</tbody>
+			<div>
+				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+				{{currentPage+1}}/{{numberOfPages()}}
+				<button [disabled]="currentPage >= project.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+			</div>
+		</table>
+	</div>
+</div>

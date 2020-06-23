@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: 'department', loadChildren: () => import('./department/department.module').then(m => m.DepartmentModule) }, //lazy load module
   { path: 'employee', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) }, //lazy load module
+  { path: 'project', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule) }, //lazy load module
+  { path: 'skill', loadChildren: () => import('./skill/skill.module').then(m => m.SkillModule) }, //lazy load module
 
   { path: '',   redirectTo: '/employee/list', pathMatch: 'full' }, // redirect to list emp
   { path: '**', component: PageNotFoundComponent } // Wildcard route for a 404 page

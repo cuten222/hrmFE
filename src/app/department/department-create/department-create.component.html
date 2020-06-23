@@ -19,8 +19,8 @@
 		<div class="form-group">
 			<label for="name">Department Name</label>
 			<input id="deptName" name="deptName" formControlName="deptName" type="text" class="form-control">
-			<div *ngIf="!deptForm.controls['deptCode'].valid && (deptForm.controls['deptCode'].touched)" class="alert alert-danger">
-				<div [hidden]="!deptForm.controls['deptCode'].errors.required">
+			<div *ngIf="!deptForm.controls['deptName'].valid && (deptForm.controls['deptName'].touched)" class="alert alert-danger">
+				<div [hidden]="!deptForm.controls['deptName'].errors.required">
 					Department Name is required.
 				</div>
 			</div>

@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeModule } from './employee/employee.module';
+import { ProjectModule } from './project/project.module';
+import { SkillModule } from './skill/skill.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { EmployeeModule } from './employee/employee.module';
     MatPaginatorModule,
     DepartmentModule,
     EmployeeModule,
+    ProjectModule,
+    SkillModule,
     BrowserAnimationsModule
   ],
   providers: [],

@@ -1,0 +1,20 @@
+<p>skill-create works!</p>
+<div>
+	<form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Skill code <span>(*)</span></label>
+            <input id="skillCode" name="skillCode" formControlName="skillCode" type="text" class="form-control" >	
+            <div *ngIf="!skillForm.controls['skillCode'].valid && (skillForm.controls['skillCode'].touched)" class="alert alert-danger">
+                <div [hidden]="!skillForm.controls['skillCode'].errors.required">
+                    Skill Code is required.
+                </div>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="name">Description</label>
+            <input id="description" name="description" formControlName="description" type="text" class="form-control" >	
+        </div>
+		<button type="submit" [disabled]="!skillForm.valid" class="btn btn-success">Submit</button>
+		<button (click)="gotoList()" class="btn btn-primary">Back</button>
+	</form>
+</div>
