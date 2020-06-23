@@ -1,32 +1,37 @@
-<p>department-create works!</p>
-<div>
-	<form [formGroup]="deptForm"  (ngSubmit)="onSubmit()">
-		<div class="form-group">
-			<label for="name">Department Code</label>
-			<input id="deptCode" name="deptCode" formControlName="deptCode" type="text" class="form-control" >	
-			<div *ngIf="!deptForm.controls['deptCode'].valid && (deptForm.controls['deptCode'].touched)" class="alert alert-danger">
-				<div [hidden]="!deptForm.controls['deptCode'].errors.required">
-					Department code is required.
-				</div>
-				<div [hidden]="!deptForm.controls['deptCode'].errors.maxlength">
-					Department code must be at least 3 characters long.
-				</div>
-				<div [hidden]="!deptForm.controls['deptCode'].errors.pattern">
-					Department code can't be number
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="name">Department Name</label>
-			<input id="deptName" name="deptName" formControlName="deptName" type="text" class="form-control">
-			<div *ngIf="!deptForm.controls['deptName'].valid && (deptForm.controls['deptName'].touched)" class="alert alert-danger">
-				<div [hidden]="!deptForm.controls['deptName'].errors.required">
-					Department Name is required.
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 style="text-align: center;">Create Department</h2>
+	</div>
+	<div class="panel-body">
+		<form [formGroup]="deptForm"  (ngSubmit)="onSubmit()">
+			<div class="form-group">
+				<label for="name">Department Code</label>
+				<input id="deptCode" name="deptCode" formControlName="deptCode" type="text" class="form-control" >	
+				<div *ngIf="!deptForm.controls['deptCode'].valid && (deptForm.controls['deptCode'].touched)" class="alert alert-danger">
+					<div [hidden]="!deptForm.controls['deptCode'].errors.required">
+						Department code is required.
+					</div>
+					<div [hidden]="!deptForm.controls['deptCode'].errors.maxlength">
+						Department code must be at least 3 characters long.
+					</div>
+					<div [hidden]="!deptForm.controls['deptCode'].errors.pattern">
+						Department code can't be number
+					</div>
 				</div>
 			</div>
-		</div>
-		<button type="submit" [disabled]="!deptForm.valid" class="btn btn-success">Submit</button>
-		<button (click)="gotoList()" class="btn btn-primary">Back</button>
-	</form>
+			<div class="form-group">
+				<label for="name">Department Name</label>
+				<input id="deptName" name="deptName" formControlName="deptName" type="text" class="form-control">
+				<div *ngIf="!deptForm.controls['deptName'].valid && (deptForm.controls['deptName'].touched)" class="alert alert-danger">
+					<div [hidden]="!deptForm.controls['deptName'].errors.required">
+						Department Name is required.
+					</div>
+				</div>
+			</div>
+			<button type="submit" [disabled]="!deptForm.valid" class="btn btn-success">Submit</button>
+			<button (click)="gotoList()" class="btn btn-primary">Back</button>
+		</form>
+	</div>
 </div>
 

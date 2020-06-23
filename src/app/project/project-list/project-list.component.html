@@ -1,21 +1,20 @@
-<p>project-list works!</p>
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h2>Project List</h2>
+		<h2 style="text-align: center;">Project List</h2>
 	</div>
 	<div class="panel-body">
-		<a class="btn btn-primary" (click)="createProject()">Add Project</a>
+		<a class="btn btn-normal marginBot-15 while-Text" (click)="createProject()">Add Project</a>
 		<table class="mat-table table table-striped">
 			<thead>
 				<tr class="mat-header-row">
-					<th>Project Name</th>
-					<th>Date Start</th>
-					<th>Estimate</th>
-					<th>Date End</th>
-					<th>Description</th>
-                    <th>Project Type</th>
-                    <th>Status</th>
-                    <th>Function</th>
+					<td>Project Name</td>
+					<td>Date Start</td>
+					<td>Estimate</td>
+					<td>Date End</td>
+					<td>Description</td>
+                    <td>Project Type</td>
+                    <td>Status</td>
+                    <td>Function</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,10 +32,10 @@
 					</td>
 				</tr>
 			</tbody>
-			<div>
-				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+			<div class="area-pagination">
+				<button class="btn-pagination" [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
 				{{currentPage+1}}/{{numberOfPages()}}
-				<button [disabled]="currentPage >= project.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+				<button class="btn-pagination" [disabled]="currentPage >= project.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
 			</div>
 		</table>
 	</div>

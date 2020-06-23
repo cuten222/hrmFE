@@ -2,3 +2,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-pagination{
+    border: 1px solid green;
+    padding: 5px 10px;
+    color: green;
+    border-radius: 5px;
+}
+.btn-normal{
+    background-color: green;
+    color: white;
+}
+.area-pagination{
+    margin-top: 15px;
+    color: green;
+}
+.marginBot-15{
+    margin-bottom: 15px;
+}
+.while-Text{
+    color: white !important;
+}

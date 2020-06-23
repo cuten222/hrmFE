@@ -1,41 +1,40 @@
-<p>department-list works!</p>
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h2>Department List</h2>
+		<h2 style="text-align: center;">Department List</h2>
 	</div>
 	<div class="panel-body">
-		<a class="btn btn-primary" (click)="deptCreate()">Add Department</a>
-		<table class="mat-table table table-striped">
+		<a class="btn btn-normal marginBot-15 while-Text" (click)="deptCreate()">Add Department</a>
+		<table class="table table-striped">
 			<thead>
-				<tr class="mat-header-row">
-					<th class='mat-header-cell'>Department Code</th>
-					<th class='mat-header-cell'>Department Name</th>
-					<th class='mat-header-cell'>create by</th>
-					<th class='mat-header-cell'>time create</th>
-					<th class='mat-header-cell'>update by</th>
-					<th class='mat-header-cell'>time update</th>
-					<th class='mat-header-cell'>Actions</th>
+				<tr>
+					<td>Department Code</td>
+					<td>Department Name</td>
+					<td>create by</td>
+					<td>time create</td>
+					<td>update by</td>
+					<td>time update</td>
+					<td>Actions</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="mat-row" *ngFor="let item of limitDepartment">
-					<td class="mat-cell">{{item.deptCode}}</td>
-					<td class="mat-cell">{{item.deptName}}</td>
-					<td class="mat-cell">{{item.createdBy}}</td>
-					<td class="mat-cell">{{item.createdAt | date:'dd/MM/yyyy'}}</td>
-					<td class="mat-cell">{{item.updatedBy}}</td>
-					<td class="mat-cell">{{item.updatedAt | date:'dd/MM/yyyy'}}</td>
-					<td class="mat-cell">
+				<tr *ngFor="let item of limitDepartment">
+					<td>{{item.deptCode}}</td>
+					<td>{{item.deptName}}</td>
+					<td>{{item.createdBy}}</td>
+					<td>{{item.createdAt | date:'dd/MM/yyyy'}}</td>
+					<td>{{item.updatedBy}}</td>
+					<td>{{item.updatedAt | date:'dd/MM/yyyy'}}</td>
+					<td>
 						<button (click)="deleteDept(item.id)" class="btn btn-danger">Delete</button>
 						<button (click)="deptUpdate(item.id)" class="btn btn-primary">Update</button>
 						<button (click)="deptDetail(item.id)" class="btn btn-info">Details</button>
 					</td>
 				</tr>
 			</tbody>
-			<div>
-				<button [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
+			<div class="area-pagination">
+				<button class="btn-pagination" [disabled]="currentPage == 0" (click)="getLimit(start=start-5,5,currentPage-1)">Previous</button>
 				{{currentPage+1}}/{{numberOfPages()}}
-				<button [disabled]="currentPage >= departments.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
+				<button class="btn-pagination" [disabled]="currentPage >= departments.length/pageSize - 1" (click)="getLimit(start=start+5,5,currentPage+1)">Next</button>
 			</div>
 		</table>
 	</div>
