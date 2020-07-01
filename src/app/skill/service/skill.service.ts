@@ -25,12 +25,10 @@ export class SkillService {
     return this.http.post(`${this.Url}/create`, skill);
   }
 
-  /** Update Employees */
   update (skillID: number, value: any): Observable<Object>{
     return this.http.put(`${this.Url}/update/${skillID}`, value);
   }
 
-  /** Delete Employees by id from the server */
   delete (skillID: number): Observable<any>{
     return this.http.put(`${this.Url}/delete/${skillID}`, null);
   }

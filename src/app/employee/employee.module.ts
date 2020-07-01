@@ -7,14 +7,11 @@ import { EmployeeUpdateComponent } from './employee-update/employee-update.compo
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 
-
-
-
 @NgModule({
   declarations: [
     EmployeeUpdateComponent,
     EmployeeCreateComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
   ],
   imports: [
     CommonModule,
@@ -23,4 +20,5 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     ReactiveFormsModule,
   ]
 })
+
 export class EmployeeModule { }
